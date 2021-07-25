@@ -13,19 +13,21 @@ ReactDOM.render(
         <Layout>
             <Section title={"cat"} desc={"こんにちは"}>
                 <div className={"l-grid-full"}>
-                    <LinkButton cta={"Download"} />
-                    <LinkButtonBorder cta={"Open in Github"} />
+                    <ul className={"c-nav-horizonal"}>
+                        <li className={"c-nav-item"}>
+                            <LinkButton link={"/"} cta={"Download"} />
+                        </li>
+                        <li className={"c-nav-item"}>
+                            <LinkButtonBorder
+                                link={"/"}
+                                cta={"Open in Github"}
+                            />
+                        </li>
+                    </ul>
                 </div>
             </Section>
-            <Section title={"cat"}>
-                <IconBox />
-                <IconBox />
-                <IconBox />
-                <IconBox />
-                <IconBox />
-                <IconBox />
-                <IconBox />
-                <IconBox />
+            <Section title={"cat"} desc={"こんにちは"}>
+                <IconBox title={"a"} icon={"a"} />
             </Section>
         </Layout>
     </React.StrictMode>,

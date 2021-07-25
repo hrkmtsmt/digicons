@@ -1,5 +1,10 @@
 import React from "react";
-export const Section = (props) => {
+type Props = {
+    title: string;
+    desc: string;
+    children?: React.ReactNode;
+};
+export const Section = (props: Props) => {
     return (
         <section className={"l-grid l-inner"}>
             <div className={"l-grid-full"}>
