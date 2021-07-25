@@ -38,6 +38,18 @@
 }
 ::selection,
 ::-moz-selection {
+    background: var(--primary-color) !important;
+    color: #fff;
+}
+@mixin selection {
+    ::-moz-selection {
+        @content;
+    }
+    ::selection {
+        @content;
+    }
+}
+@include selection {
     background: var(--primary-color);
     color: #fff;
 }
@@ -353,6 +365,7 @@ select {
         flex-wrap: wrap;
     }
     &-item {
+        display: flex;
         margin-right: 20px;
 
         &:last-child {
@@ -446,16 +459,24 @@ select {
         filter: var(--shadow-color-hover);
         background-color: var(--base-color);
     }
-    &:active::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        border-radius: 10px;
-        border: solid 2px var(--primary-color);
-        transition: ease-in-out 0.2s;
+    &:active {
+        transform: scale(0.98);
+        transition: ease-in-out 0.1s;
+    }
+    &:focus {
+        background: var(--base-color);
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            border: solid 2px var(--primary-color);
+            transition: ease-in-out 0.2s;
+        }
     }
     &-content {
         position: absolute;
@@ -748,32 +769,53 @@ select {
     display: inline-block;
     padding: 0 20px;
     line-height: 40px;
-    border-radius: 20px;
     font-weight: 700;
+    border-radius: 20px;
     text-align: center;
     text-decoration: none;
-    background: var(--primary-color);
+    background: none;
     color: var(--base-color);
+    background: var(--primary-color);
     overflow: hidden;
+    z-index: 1;
+    transition: ease-in-out 0.2s;
 
+    &:hover {
+        color: var(--primary-color);
+        background: var(--base-color);
+        transition: ease-in-out 0.2s;
+    }
     &::before {
         content: "";
         position: absolute;
         width: 100%;
         height: 40px;
         background: var(--base-color);
-        opacity: 0.2;
         left: 0;
         transform: translateX(-100%);
         -webkit-transform: translateX(-100%);
         transition: ease-in-out 0.2s;
         border-radius: 20px;
+        z-index: -1;
     }
-
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+        border: solid 2px var(--primary-color);
+    }
     &:hover::before {
         transform: translateX(0);
         -webkit-transform: translateX(0);
         transition: ease-in-out 0.2s;
+    }
+    &:active {
+        transform: scale(0.98);
+        transition: ease-in-out 0.1s;
     }
 }
 .c-button-border {
@@ -822,6 +864,10 @@ select {
         transform: translateX(0);
         -webkit-transform: translateX(0);
         transition: ease-in-out 0.2s;
+    }
+    &:active {
+        transform: scale(0.98);
+        transition: ease-in-out 0.1s;
     }
 }
 .c-like-button {
