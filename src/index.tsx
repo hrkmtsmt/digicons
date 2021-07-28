@@ -27,7 +27,7 @@ ReactDOM.render(
                 </div>
             </Section>
             <Section title={"cat"} desc={"こんにちは"}>
-                <IconBox id={"a"} svg={"a"} title={"a"} icon={"a"} />
+                <IconBox id={"a"} svg={"<></>"} title={"a"} icon={"a"} />
             </Section>
         </Layout>
     </React.StrictMode>,

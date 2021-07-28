@@ -6,10 +6,10 @@ type Props = {
 };
 export const Layout: React.VFC<Props> = (props: Props) => {
     return (
-        <React.StrictMode>
+        <React.Fragment>
             <Header />
             <main className={"l-main"}>{props.children}</main>
             <Footer />
-        </React.StrictMode>
+        </React.Fragment>
     );
 };
