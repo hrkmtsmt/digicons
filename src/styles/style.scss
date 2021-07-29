@@ -478,7 +478,7 @@ select {
             transition: ease-in-out 0.2s;
         }
     }
-    &-content {
+    &-icon {
         position: absolute;
         display: block;
         background: var(--primary-color);
@@ -509,13 +509,22 @@ select {
     transition: ease-in-out 0.2s;
     transform: translateY(100%);
 
-    &-inner {
+    &-body {
+        display: flex;
+        justify-content: space-between;
         background: var(--base-color);
         max-width: var(--max-width);
         width: 100%;
         margin: 0 auto;
         border-radius: 10px;
         padding: 20px;
+    }
+    &-alert {
+        display: none;
+
+        &.is-visible {
+            display: block;
+        }
     }
 }
 .is-focus {
