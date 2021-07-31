@@ -5,12 +5,14 @@ import { Section } from "./components/section";
 import { IconBox } from "./components/icon-box";
 import { LinkButton } from "./components/link-button";
 import { LinkButtonBorder } from "./components/link-button-border";
+import { Loop } from "./components/Loop";
 import "./styles/reset.css";
 import "./styles/style.scss";
 
 ReactDOM.render(
     <React.StrictMode>
         <Layout>
+            <Loop />
             <Section title={"cat"} desc={"こんにちは"}>
                 <div className={"l-grid-full"}>
                     <ul className={"c-nav-horizonal"}>
@@ -27,7 +29,13 @@ ReactDOM.render(
                 </div>
             </Section>
             <Section title={"cat"} desc={"こんにちは"}>
-                <IconBox id={"a"} svg={"<></>"} title={"a"} icon={"a"} />
+                <IconBox
+                    id={"a"}
+                    svg={"<></>"}
+                    image={"https://h"}
+                    title={"a"}
+                    icon={"a"}
+                />
             </Section>
         </Layout>
     </React.StrictMode>,

@@ -4,14 +4,15 @@ type Props = {
     title: string;
     icon: string;
     svg: string;
+    image: string;
 };
 
 export const IconBox = (props: Props) => {
     const [isFocus, setIsFocus] = useState(false);
-    const toggleOnForcus = () => setIsFocus(!isFocus);
+    const toggleIsForcus = () => setIsFocus(!isFocus);
     const toggleClass = () => {
         if (isFocus === false) {
-            return "";
+            return null;
         } else {
             return "is-focus";
         }
@@ -19,20 +20,24 @@ export const IconBox = (props: Props) => {
     const copyClipboad = (text: string) => {
         navigator.clipboard.writeText(text).then(
             () => {
-                const copiedSuccsesed: any =
-                    document.getElementById("copied_successed");
-                copiedSuccsesed.classList.add("is-visible");
+                const modalClass: any = document.getElementById(
+                    `${props.id}-modal`
+                );
+                modalClass.classList.add("is-visible");
+                modalClass.textContent = "Copied";
                 setTimeout(() => {
-                    copiedSuccsesed.classList.remove("is-visible");
-                }, 4000);
+                    modalClass.classList.remove("is-visible");
+                }, 2000);
             },
             () => {
-                const copiedFailed: any =
-                    document.getElementById("copied_failed");
-                copiedFailed.classList.add("is-visible");
+                const modalClass: any = document.getElementById(
+                    `${props.id}-modal`
+                );
+                modalClass.classList.add("is-visible");
+                modalClass.textContent = "Error";
                 setTimeout(() => {
-                    copiedFailed.classList.remove("is-visible");
-                }, 4000);
+                    modalClass.classList.remove("is-visible");
+                }, 2000);
             }
         );
     };
@@ -41,44 +46,39 @@ export const IconBox = (props: Props) => {
             <div className={"l-grid-extra-small"}>
                 <button
                     id={props.id}
-                    onFocus={toggleOnForcus}
-                    onBlur={toggleOnForcus}
-                    className={"c-icon-box "}
+                    onClick={toggleIsForcus}
+                    className={`c-box-square ${toggleClass()}`}
                 >
-                    <i className={`c-icon-box-icon ${props.icon}`}>
-                        {props.svg}
+                    <i className={`c-box-square-icon ${props.icon}`}>
+                        <img src={props.image} height={100} width={100} />
                     </i>
-                    <span className={"c-icon-box-title"}>{props.title}</span>
+                    <span className={"c-box-square-title"}>{props.title}</span>
                 </button>
-                <div className={`c-icon-bord is-focus ${toggleClass()}`}>
-                    <div className={"c-icon-bord-body"}>
-                        <div className={"c-nav-horizonal"}>
-                            <i className={` ${props.icon}`}>{props.svg}</i>
-                            <span id={"s"} className={"c-icon-bord-title"}>
-                                {props.title}
-                            </span>
-                            <div
-                                id={"copied_successed"}
-                                className={"c-icon-bord-alert"}
-                            >
-                                Copied
-                            </div>
-                            <div
-                                id={"copied_failed"}
-                                className={"c-icon-bord-alert"}
-                            >
-                                Error
-                            </div>
-                        </div>
-                        <button
-                            onClick={() => copyClipboad(props.svg)}
-                            className={"c-button"}
-                        >
-                            Copy SVG
-                        </button>
+            </div>
+            <div className={`c-modal ${toggleClass()}`}>
+                <div className={"c-modal-body"}>
+                    <div className={"c-nav-horizonal"}>
+                        <i className={`${props.icon}`}>{props.image}</i>
+                        <span id={"s"} className={"c-modal-title"}>
+                            {props.title}
+                        </span>
+                        <div
+                            id={`${props.id}-modal`}
+                            className={"c-modal-alert"}
+                        ></div>
                     </div>
+                    <button
+                        onClick={() => copyClipboad(props.svg)}
+                        className={"c-button"}
+                    >
+                        Copy SVG
+                    </button>
                 </div>
             </div>
+            <div
+                onClick={toggleIsForcus}
+                className={`c-modal-background ${toggleClass()}`}
+            ></div>
         </React.Fragment>
     );
 };

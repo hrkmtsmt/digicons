@@ -21,7 +21,7 @@
     --secondary-color: #044cc9;
     --font-color: #202020;
     --sub-font-color: #808080;
-    --glass-color: rgba(255, 255, 255, 0.6);
+    --glass-color: rgba(255, 255, 255, 0.2);
     --color-black: #404040;
     --color-white: #fff;
     --color-gray: #fafafa;
@@ -446,7 +446,7 @@ select {
         display: inline-block;
     }
 }
-.c-icon-box {
+.c-box-square {
     width: 100%;
     padding: 0 0 100%;
     aspect-ratio: 1/1;
@@ -463,8 +463,9 @@ select {
         transform: scale(0.98);
         transition: ease-in-out 0.1s;
     }
-    &:focus {
+    &.is-focus {
         background: var(--base-color);
+        z-index: 999;
 
         &::after {
             content: "";
@@ -500,7 +501,7 @@ select {
         bottom: 0;
     }
 }
-.c-icon-bord {
+.c-modal {
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -508,6 +509,12 @@ select {
     padding: 40px;
     transition: ease-in-out 0.2s;
     transform: translateY(100%);
+
+    &.is-focus {
+        transform: translateY(0);
+        transition: ease-in-out 0.2s;
+        z-index: 999;
+    }
 
     &-body {
         display: flex;
@@ -526,18 +533,33 @@ select {
             display: block;
         }
     }
-}
-.is-focus {
-    transform: translateY(0);
-    transition: ease-in-out 0.2s;
+    &-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--glass-color);
+        backdrop-filter: blur(2px);
+        z-index: 998;
+        display: none;
+        opacity: 0;
+        transition: ease-in-out 0.2s;
+
+        &.is-focus {
+            display: block;
+            opacity: 1;
+            transition: ease-in-out 0.2s;
+        }
+    }
 }
 @media screen and (max-width: 768px) {
-    .c-icon-bord {
+    .c-icon-modal {
         padding: 30px;
     }
 }
 @media screen and (max-width: 576px) {
-    .c-icon-bord {
+    .c-icon-modal {
         padding: 20px;
     }
 }
