@@ -50,7 +50,7 @@ export const IconBox = (props: Props) => {
                     className={`c-box-square ${toggleClass()}`}
                 >
                     <i className={`c-box-square-icon ${props.icon}`}>
-                        <img src={props.image} height={100} width={100} />
+                        <img src={props.image} alt={props.id} />
                     </i>
                     <span className={"c-box-square-title"}>{props.title}</span>
                 </button>

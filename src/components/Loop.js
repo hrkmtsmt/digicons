@@ -12,7 +12,6 @@ export const Loop = () => {
             setIcons(res.data.contents);
         });
     }, []);
-    console.log(icons[0].image);
     return (
         <Section title={""} desc={""}>
             {icons.map((icon) => (
