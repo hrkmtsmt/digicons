@@ -1,12 +1,12 @@
 import React from "react";
 type Props = {
-    link: string;
-    cta: string;
+  link: string;
+  cta: string;
 };
 export const LinkButtonBorder = (props: Props) => {
-    return (
-        <a className={"c-button-border"} href={props.link}>
-            {props.cta}
-        </a>
-    );
+  return (
+    <a className={"c-button-border"} href={props.link}>
+      {props.cta}
+    </a>
+  );
 };

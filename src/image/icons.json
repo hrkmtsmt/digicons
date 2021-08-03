@@ -1,0 +1,15 @@
+{
+  "icons": [
+    {
+      "category": "Brand",
+      "id": "brand",
+      "icon": [
+        {
+          "id": "dribbble",
+          "name": "Dribbble",
+          "element": "<svg></svg>"
+        }
+      ]
+    }
+  ]
+}
