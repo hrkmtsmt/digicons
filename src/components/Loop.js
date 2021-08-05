@@ -14,11 +14,11 @@ export const Loop = () => {
   return (
     <React.Fragment>
       {icons.map((category, index) => (
-        <Section title={category.category} desc={""}>
+        <Section title={null} category={category.category} desc={null}>
           {icons[index].icons.map((icon) => (
             <IconBox
-              key={icon.id}
-              id={icon.id}
+              key={icon.iconId}
+              id={icon.iconId}
               title={icon.name}
               svg={icon.element}
               image={icon.image.url}

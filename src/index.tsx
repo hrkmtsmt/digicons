@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Layout } from "./components/layout";
 import { Section } from "./components/section";
-import { IconBox } from "./components/icon-box";
 import { LinkButton } from "./components/link-button";
 import { LinkButtonBorder } from "./components/link-button-border";
 import { Loop } from "./components/Loop";
@@ -12,8 +11,13 @@ import "./styles/style.scss";
 ReactDOM.render(
   <React.StrictMode>
     <Layout>
-      <Loop />
-      <Section title={"cat"} desc={"こんにちは"}>
+      <Section
+        title={"cat"}
+        category={null}
+        desc={
+          "digiconsは日本のエンジニア向けに最適化されたアイコンを提供します。"
+        }
+      >
         <div className={"l-grid-full"}>
           <ul className={"c-nav-horizonal"}>
             <li className={"c-nav-item"}>
@@ -25,15 +29,7 @@ ReactDOM.render(
           </ul>
         </div>
       </Section>
-      <Section title={"cat"} desc={"こんにちは"}>
-        <IconBox
-          id={"a"}
-          svg={"<></>"}
-          image={"https://h"}
-          title={"a"}
-          icon={"a"}
-        />
-      </Section>
+      <Loop />
     </Layout>
   </React.StrictMode>,
   document.getElementById("root")

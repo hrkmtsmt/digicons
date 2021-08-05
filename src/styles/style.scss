@@ -18,6 +18,7 @@
 :root {
   --base-color: #ffffff;
   --primary-color: #f5177f;
+  --primary-color-light: #ffd5e9;
   --secondary-color: #044cc9;
   --font-color: #202020;
   --sub-font-color: #808080;
@@ -451,6 +452,15 @@ select {
     font-weight: 700;
     color: var(--primary-color);
   }
+  &-category {
+    color: var(--primary-color);
+    background: var(--primary-color-light);
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 700;
+  }
   &-desc {
     display: inline-block;
   }
@@ -527,6 +537,9 @@ select {
     margin: 0 auto;
     border-radius: 10px;
     padding: 20px;
+  }
+  &-icon {
+    display: flex;
   }
   &-alert {
     display: none;

@@ -5,6 +5,7 @@ type Props = {
   icon: string;
   svg: string;
   image: string;
+  download: string;
 };
 export const IconBox = (props: Props) => {
   const [isFocus, setIsFocus] = useState(false);
@@ -54,20 +55,22 @@ export const IconBox = (props: Props) => {
       <div className={`c-modal ${toggleClass()}`}>
         <div className={"c-modal-body"}>
           <div className={"c-nav-horizonal"}>
-            <i className={`${props.icon}`}>
+            <i className={`c-modal-icon i-${props.id}`}>
               <img src={props.image} alt={props.title} />
             </i>
-            <span id={"s"} className={"c-modal-title"}>
+            <div id={"s"} className={"c-modal-title"}>
               {props.title}
-            </span>
+            </div>
             <div id={`${props.id}-modal`} className={"c-modal-alert"}></div>
           </div>
-          <button
-            onClick={() => copyClipboad(props.svg)}
-            className={"c-button"}
-          >
-            Copy SVG
-          </button>
+          <div>
+            <button
+              onClick={() => copyClipboad(props.svg)}
+              className={"c-button-border"}
+            >
+              Copy SVG
+            </button>
+          </div>
         </div>
       </div>
       <div
