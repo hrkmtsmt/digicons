@@ -16,23 +16,20 @@ export const IconBox = (props: Props) => {
     }
   };
   const copyClipboad = (text: string) => {
+    const modalId = document.getElementById(`${props.id}-modal`)!;
     navigator.clipboard.writeText(text).then(
       () => {
-        const modalClass: any = document.getElementById(`${props.id}-modal`);
-        modalClass.classList.add("is-visible");
-        modalClass.textContent = "Copied";
+        modalId.classList.add("is-success");
+        modalId.textContent = "Copied";
         setTimeout(() => {
-          modalClass.classList.remove("is-visible");
+          modalId.classList.remove("is-success");
         }, 2000);
       },
       () => {
-        const modalClass: any = document.getElementsByClassName(
-          `${props.id}-modal`
-        );
-        modalClass.classList.add("is-visible");
-        modalClass.textContent = "Error";
+        modalId.classList.add("is-faild");
+        modalId.textContent = "Error";
         setTimeout(() => {
-          modalClass.classList.remove("is-visible");
+          modalId.classList.remove("is-faild");
         }, 2000);
       }
     );
@@ -49,32 +46,36 @@ export const IconBox = (props: Props) => {
             <img src={props.image} alt={props.id} />
           </i>
         </button>
-      </div>
-      <div className={`c-modal ${toggleClass()}`}>
-        <div className={"c-modal-body"}>
-          <div className={"c-nav-horizonal"}>
-            <i className={`c-modal-icon i-${props.id}`}>
-              <img src={props.image} alt={props.title} />
-            </i>
-            <div id={"s"} className={"c-modal-title"}>
-              {props.title}
+        <div className={`c-modal ${toggleClass()}`}>
+          <div className={"c-modal-body"}>
+            <div className={"c-nav-horizonal"}>
+              <li className={"c-nav-horizonal-item"}>
+                <i className={`c-modal-icon i-${props.id}`}>
+                  <img src={props.image} alt={props.title} />
+                </i>
+              </li>
+              <li className={"c-nav-horizonal-item"}>
+                <div id={"s"} className={"c-modal-title"}>
+                  {props.title}
+                </div>
+              </li>
+              <div id={`${props.id}-modal`} className={"c-modal-alert"}></div>
             </div>
-            <div id={`${props.id}-modal`} className={"c-modal-alert"}></div>
-          </div>
-          <div>
-            <button
-              onClick={() => copyClipboad(props.svg)}
-              className={"c-button-border"}
-            >
-              Copy SVG
-            </button>
+            <div>
+              <button
+                onClick={() => copyClipboad(props.svg)}
+                className={"c-button-border"}
+              >
+                Copy SVG
+              </button>
+            </div>
           </div>
         </div>
+        <div
+          onClick={toggleIsForcus}
+          className={`c-modal-background ${toggleClass()}`}
+        ></div>
       </div>
-      <div
-        onClick={toggleIsForcus}
-        className={`c-modal-background ${toggleClass()}`}
-      ></div>
     </React.Fragment>
   );
 };
