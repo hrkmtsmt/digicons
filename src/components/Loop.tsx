@@ -2,20 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Section } from "./section";
 import { IconBox } from "./icon-box";
 import axios from "axios";
+type Icons = {
+  category: string;
+  icons: string[];
+};
+
 export const Loop = () => {
-  const [icons, setIcons] = useState([]);
+  const [fetchData, setFetchData] = useState<Icons[]>([]);
   useEffect(() => {
     const headers = { "X-API-KEY": process.env.REACT_APP_API_KEY };
     const endpoint = `${process.env.REACT_APP_ENDPOINT}icons`;
     axios.get(endpoint, { headers: headers }).then((res) => {
-      setIcons(res.data.contents);
+      setFetchData(res.data.contents);
     });
   }, []);
   return (
     <React.Fragment>
-      {icons.map((category, index) => (
-        <Section title={null} category={category.category} desc={null}>
-          {icons[index].icons.map((icon) => (
+      {fetchData.map((categories, index) => (
+        <Section title={null} category={categories.category} desc={null}>
+          {fetchData[index].icons.map((icon: any) => (
             <IconBox
               key={icon.iconId}
               id={icon.iconId}
