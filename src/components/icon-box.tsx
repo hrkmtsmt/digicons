@@ -3,7 +3,6 @@ type Props = {
   id: string;
   title: string;
   svg: string;
-  image: string;
 };
 export const IconBox = (props: Props) => {
   const [isFocus, setIsFocus] = useState(false);
@@ -42,17 +41,23 @@ export const IconBox = (props: Props) => {
           onClick={toggleIsForcus}
           className={`c-box-square ${toggleClass()}`}
         >
-          <i className={`c-box-square-icon i-${props.id}`}>
-            <img src={props.image} alt={props.id} />
-          </i>
+          <i
+            className={`c-box-square-icon i-${props.id}`}
+            dangerouslySetInnerHTML={{
+              __html: `${props.svg}`,
+            }}
+          ></i>
         </button>
         <div className={`c-modal ${toggleClass()}`}>
           <div className={"c-modal-body"}>
             <div className={"c-nav-horizonal"}>
               <li className={"c-nav-horizonal-item"}>
-                <i className={`c-modal-icon i-${props.id}`}>
-                  <img src={props.image} alt={props.title} />
-                </i>
+                <i
+                  className={`c-modal-icon i-${props.id}`}
+                  dangerouslySetInnerHTML={{
+                    __html: `${props.svg}`,
+                  }}
+                ></i>
               </li>
               <li className={"c-nav-horizonal-item"}>
                 <div id={"s"} className={"c-modal-title"}>

@@ -24,9 +24,8 @@ export const Loop = () => {
             <IconBox
               key={icon.iconId}
               id={icon.iconId}
-              title={icon.name}
-              svg={icon.element}
-              image={icon.image.url}
+              title={icon.iconName}
+              svg={icon.iconSVG}
             />
           ))}
         </Section>
