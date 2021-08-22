@@ -1,8 +1,8 @@
 import React from "react";
-import { Section } from "../components/section";
-import { LinkButton } from "../components/link-button";
-import { LinkButtonBorder } from "../components/link-button-border";
-import { Loop } from "../components/Loop";
+import { Section } from "../../src/components/section";
+import { LinkButton } from "../../src/components/link-button";
+import { LinkButtonBorder } from "../../src/components/link-button-border";
+import { Loop } from "../../src/components/loop";
 export const Home = () => {
   return (
     <React.Fragment>

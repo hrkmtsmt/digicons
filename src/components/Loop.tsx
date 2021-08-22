@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Section } from "./section";
-import { IconBox } from "./icon-box";
+import { Section } from "../../src/components/section";
+import { IconBox } from "../../src/components/icon-box";
 import axios from "axios";
 type Icons = {
   category: string;
