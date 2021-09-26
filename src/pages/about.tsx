@@ -1,3 +1,9 @@
+import { Grid, Full } from "../../src/components/layout/grid";
+
 export const About = () => {
-  return <div>{"aaa"}</div>;
+  return (
+    <Grid>
+      <Full>Beta版です。</Full>
+    </Grid>
+  );
 };

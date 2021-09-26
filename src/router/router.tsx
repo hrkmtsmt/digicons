@@ -1,13 +1,20 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { About } from "../../src/pages/about";
-import { Home } from "../pages/home";
+import { Home } from "../../src/pages";
+
+export const path = {
+  home: "/",
+  about: "/about",
+};
 export const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path={"/"} render={() => <Home />} />
-        <Route exact path={"/about"} render={() => <About />} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route exact={true} path={path.home}>
+        <Home />
+      </Route>
+      <Route exact={true} path={path.about}>
+        <About />
+      </Route>
+    </Switch>
   );
 };
